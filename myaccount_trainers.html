@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>My Account</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="navbar.css">
+	<style>
+
+.navbar {
+  width: 100%;
+  background-color: black;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: lightgrey;
+  color: black;
+}
+
+.active {
+  background-color: grey;
+  color: black;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+</style>
+
+</head>
+<body>
+	<div class="navbar">
+  <a class="active" href="home.html"><i class="fa fa-home"></i> Home</a> 
+  <a href="merch.html"><i class="fa fa-shopping-bag"></i> Merchandise</a> 
+  <a href="contact.html"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+
+  <!-- DISPLAY TRAINER_ID, TRAINER_NAME, JOIN DATE, SPECIALIZATION, SALARY using PHP -->
+
+</div>
+</body>
+</html>

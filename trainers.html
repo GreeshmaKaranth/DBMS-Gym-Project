@@ -1,0 +1,109 @@
+<html>
+<head>
+	<title>Trainers - Sign Up</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="navbar.css">
+		<style>
+		input[type=text]{
+			width: 50%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+		}
+		input[type=email]{
+			width: 75%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+		}
+				@font-face
+		{
+		  font-family: font;
+		  src: url('font.otf'); 
+		}
+
+				@font-face
+		{
+		  font-family: font2;
+		  src: url('font3.otf');
+		}
+
+		.add {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 13px 23px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.add:hover {
+    background-color: white; /* Green */
+    color: black;
+    border: 2px solid black;
+    padding: 12px 21px;
+    cursor:pointer;
+}
+
+
+	</style>
+</head>
+<body>
+
+	<div class="navbar">
+  <a href="home.html"><i class="fa fa-home"></i> &nbsp;Home</a>
+  <a href="about.html"><i class="fa fa-question-circle"></i> &nbsp;About Us</a> 
+  <a href="merch.html"><i class="fa fa-shopping-bag"></i> &nbsp;Merchandise</a> 
+  <a href="contact.html"><i class="fa fa-fw fa-envelope"></i> &nbsp;Contact</a> 
+</div>
+
+	<!-- <p>Form for trainers</p> -->
+	<h2 style="color: black; font-size: 60px;font-family: font2;"><center>Sign Up - Trainers</center></h2>
+ <center>
+ 	<form style="color: black; font-family: Verdana; font-size: 17px" action="myaccount_trainers.php" target="_blank" method="POST">
+
+ 	<fieldset style="width: 40%" style="align-self: left">
+    <legend style="color: black;font-size:25px;font-family:font2;">Contact Details: </legend><br>
+
+	Name:
+	<input type="text" name="firstname" style="font-size:20pt" required><br><br>
+	Phone:
+	<input type="text" name="phone" style="font-size:20pt" required><br><br>
+	Email:
+	<input type="email" name="email" style="font-size:20pt" required><br><br>
+	</fieldset>
+	<br><br>
+
+	<fieldset style="width: 40%" style="align-self: left">
+    <legend style="color: black;font-size:25px;font-family:font2" required>About Me:</legend><br>
+
+    Experience (In Years):
+	<input type="number" name="firstname1" style="font-size:20pt" required><br><br>
+    Join Date: 
+    <input type="date" name="startdate" style="font-size: 22px" min="2019-04-23" required><br><br>
+    Gender:
+    <input type="radio" name="gender" value="M"> M
+    <input type="radio" name="gender" value="F"> F <br><br>
+    Requests/Comments:
+	<input type="text" name="comments" style="font-size: 22px" height="20%"><br><br>
+	
+	</fieldset>
+	<br><br>
+
+	<div class="button-section">
+     <span class="privacy-policy">
+     <input type="checkbox" name="field7" required> I agree to Kiran's Gym <a href="termsandcond.html" target = "_blank" style="color:dodgerblue">Terms & Conditions</a> 
+     <p></p>
+     </span>
+    </div>
+    <p></p>
+	<label><span> </span><input type="submit" class="add" value="Submit" style="size: 50px" /></label>
+	<!-- 	<input type="submit" value="Submit"> -->
+
+ 	</form>
+ </center>
+</body>
