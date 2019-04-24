@@ -1,4 +1,4 @@
-\c postgres
+	\c postgres
 DROP DATABASE newgym;
 CREATE DATABASE newgym;
 \c newgym
@@ -59,9 +59,7 @@ CREATE TABLE Exercises(
 	Ex_Name varchar(20) NOT NULL,
 	Type varchar(15),
 	Time_Slot time,
-	No_Attending int,
-	Trainer_ID char(15),
-	FOREIGN KEY (Trainer_ID) REFERENCES Trainers (T_ID) on delete cascade
+	No_Attending int
 );
 
 CREATE TABLE Equipments(
@@ -106,10 +104,11 @@ CREATE TABLE Use(
 
 CREATE TABLE Takeup(
 	Member_ID char(15),
-	Excercise_ID char(15),
-	PRIMARY KEY(Member_ID, Excercise_ID),
+	Exercise_ID char(15),
+	PRIMARY KEY(Member_ID, Exercise_ID),
 	FOREIGN KEY (Member_ID) REFERENCES Members (Mem_ID) on delete cascade,
-	FOREIGN KEY (Excercise_ID) REFERENCES Exercises(E_ID) on delete cascade
+	FOREIGN KEY (Exercise_ID) REFERENCES Exercises(E_ID) on delete cascade
 );
+
 ALTER TABLE MEMBERS add check(phone between '6000000000' and '9999999999');
 	

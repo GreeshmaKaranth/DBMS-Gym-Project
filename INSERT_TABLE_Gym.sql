@@ -43,11 +43,11 @@ INSERT into Merchandise values('02RED', 'Red', 800, 'Tee', 98, 52);
 INSERT into Merchandise values('02BLU', 'Blue', 800, 'Tee', 109, 4);
 INSERT into Merchandise values('03GRE', 'Green', 900, 'Shorts', 46, 34);
 
-INSERT into Exercises values('EX01', 'Aerobics', 'Endurance', '1:00:00', 58, 'T001');
-INSERT into Exercises values('EX02', 'S&C', 'Strength', '15:00:00', 36, 'T003');
-INSERT into Exercises values('EX03', 'HRX', 'High Intensity', '18:00:00', 44, 'T002');
-INSERT into Exercises values('EX04', 'Balance Training', 'Balance', '14:00:00', 34, 'T004');
-INSERT into Exercises values('EX05', 'Stretches', 'Flexibilty', '07:00:00', 36, 'T005');
+INSERT into Exercises values('EX01', 'Aerobics', 'Endurance', '1:00:00', 58);
+INSERT into Exercises values('EX02', 'S&C', 'Strength', '15:00:00', 36);
+INSERT into Exercises values('EX03', 'HRX', 'High Intensity', '18:00:00', 44);
+INSERT into Exercises values('EX04', 'Balance Training', 'Balance', '14:00:00', 34);
+INSERT into Exercises values('EX05', 'Stretches', 'Flexibilty', '07:00:00', 36);
 
 INSERT into Equipments values('EQ01', 10, 3250, 'Treadmill');
 INSERT into Equipments values('EQ02', 8, 1050, 'Medicine Ball');
@@ -100,6 +100,7 @@ select * from Merchandise;
 select * from Exercises;
 select * from Equipments;
 select * from Consist;
+select * from conduct;
 select * from Use;
 select * from Buy;
 select * from Takeup;

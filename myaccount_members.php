@@ -71,15 +71,42 @@ body{
    $startdate=$_POST['startdate'];
    $pack=$_POST['pack'];
 
+   // $newdate= strtotime($startdate);
+   // $enddate=strtotime('+3 months', $newdate);
+   // $findate=date('d/m/Y', $enddate);
+   // echo $findate;
+
+   $sql5=<<<EOF
+    select duration_in_months from Subscriptions where Sub_ID='$pack';
+EOF;
+
+  $new5 = pg_query($con, $sql5);
+     if(!$new5) {
+      echo pg_last_error($con);
+      exit;
+   } 
+
+   while($row5=pg_fetch_row($new5)){
+        $x='+'.$row5[0].' months';
+        $newdate= strtotime($startdate);
+        $enddate=strtotime($x, $newdate);
+        $finalenddate=date('d/m/Y', $enddate);
+   }
+
+    // echo $finalenddate;
+
+
+
    $mid = 'M'.'0'.rand(100,999);
    // $tid = 'T'.'0'.rand(10,99);
    // echo $name.$phone.$email.$dob.$gender.$weight.$height.$startdate;
 
    $sql=<<<EOF
-
-   INSERT INTO MEMBERS(Mem_ID, Phone, M_Name, Start_Date, Sex, Weight_in_kg, Height_in_cm, Date_Of_Birth, Email_ID, Pack_ID, End_Date, Trainer_ID) VALUES ('$mid', '$phone', '$name', '$startdate', '$gender', '$weight', '$height', '$dob', '$email', '$pack', '$startdate', 'T032');
+   INSERT INTO MEMBERS(Mem_ID, Phone, M_Name, Start_Date, Sex, Weight_in_kg, Height_in_cm, Date_Of_Birth, Email_ID, Pack_ID, End_Date, Trainer_ID) VALUES ('$mid', '$phone', '$name', '$startdate', '$gender', '$weight', '$height', '$dob', '$email', '$pack', '$finalenddate', 'T003');
 
 EOF;
+
+    
 
 if(!pg_query($con,$sql)){
       echo "<center><br><b style=\"color:red\">";
@@ -103,59 +130,64 @@ EOF;
       exit;
    } 
    while($row = pg_fetch_row($ret)) {
-      echo " ID = ". $row[0] . "<br>";
-      echo " PHONE = ". $row[1] ."<br>";
-      echo " NAME = ". $row[2] ."<br>";
-      echo " START DATE =  ".$row[3] ."<br>";
-      echo " GENDER =  ".$row[4] ."<br>";
-      echo " WEIGHT =  ".$row[5] ." kg<br>";
-      echo " HEIGHT =  ".$row[6] ." cm<br>";
+      echo " ID            = ". $row[0] . "<br>";
+      echo " PHONE         = ". $row[1] ."<br>";
+      echo " NAME          = ". $row[2] ."<br>";
+      echo " START DATE    =  ".$row[3] ."<br>";
+      echo " GENDER        =  ".$row[4] ."<br>";
+      echo " WEIGHT        =  ".$row[5] ." kg<br>";
+      echo " HEIGHT        =  ".$row[6] ." cm<br>";
       echo " DATE OF BIRTH =  ".$row[7] ."<br>";
-      echo " EMAIL ID =  ".$row[8] ." <br>";
-      echo " PACK ID =  ".$row[9] ." <br>";
-      echo " END DATE =  ".$row[10] ." <br>";
-      echo " TRAINER ID =  ".$row[11] ." <br><br>";
+      echo " EMAIL ID      =  ".$row[8] ." <br>";
+      echo " PACK ID       =  ".$row[9] ." <br>";
+      echo " END DATE      =  ".$row[10] ." <br>";
+      echo " TRAINER ID    =  ".$row[11] ." <br><br>";
       echo "</center>";
    }
 
-//    $sql2=<<<EOF
-//    select exercise_ID from consist where pack_ID='$pack';
-// EOF;
+   $sql2=<<<EOF
+   select exercise_ID from consist where pack_ID='$pack';
+EOF;
 
-//   $val = pg_query($con, $sql2);
-//      if(!$val) {
-//       echo pg_last_error($con);
-//       exit;
-//    } 
+  $val = pg_query($con, $sql2);
+     if(!$val) {
+      echo pg_last_error($con);
+      exit;
+   } 
 
-//    $i = 0;
-//    $vals = array("1", "2", "3", "4");
+   $i = 0;
+   $vals = array("1", "2", "3", "4");
 
-//    while($rows = pg_fetch_row($val)) {
-//       $vals[$i] = $rows[0];
-//       $i = $i+1;
-//    }
+   while($rows = pg_fetch_row($val)) {
+        $vals[$i] = $rows[0];
 
-//    echo "<center>Exercises chosen: <br>";
-//    for($x = 0; $x < $i; $x++) {
+        $sql4=<<<EOF
+        INSERT INTO TAKEUP(Member_ID, Exercise_ID) VALUES ('$mid', '$vals[$i]');
+EOF;
+      $i = $i+1;
+   }
 
-//    $sql3 = <<<EOF
-//    select ex_name, type from exercises where ex_id='$vals[$x]';
-// EOF;
+   echo "<center><b style=\"font-size:34px;\"><br>Exercises chosen: <br><br></b>";
+   for($x = 0; $x < $i; $x++) {
 
-//   $new = pg_query($con, $sql2);
-//      if(!$new) {
-//       echo pg_last_error($con);
-//       exit;
-//    } 
+   $sql3 = <<<EOF
+   select ex_name, type, Time_Slot from exercises where e_id='$vals[$x]';
+EOF;
 
-//    while($rowd = pg_fetch_row($new)) {
-//     echo "Name: ".$new[0]."<br>";
-//     echo "Type: ".$new[1]."<br><br>";
-//    }
-// }
+  $new = pg_query($con, $sql3);
+     if(!$new) {
+      echo pg_last_error($con);
+      exit;
+   } 
 
-// echo "</center>"
+   while($rowd = pg_fetch_row($new)) {
+    echo "Name: ".$rowd[0]."<br>";
+    echo "Type: ".$rowd[1]."<br>";
+    echo "Scheduled at ".$rowd[2]." hours<br><br>";
+   }
+}
+
+echo "</center>"
 ?>
 
 <script>

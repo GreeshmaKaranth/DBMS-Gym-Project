@@ -79,7 +79,7 @@ body{
 
    INSERT INTO TRAINERS (T_ID, T_Name, Email_ID, Sex, Join_Date, Experience_in_Years, Salary) VALUES ('$tid','$name','$email','$gender','$startdate',$experience,'25000');
    INSERT INTO PHONE(Phone_No, Trainer_ID) VALUES ($phone,'$tid');
-   INSERT INTO CONDUCT(Exercise_ID, Trainer_ID) VALUES ($exid, $tid);
+   INSERT INTO CONDUCT(Exercise_ID, Trainer_ID) VALUES ('$exid', '$tid');
 
 EOF;
 
@@ -105,20 +105,39 @@ EOF;
       exit;
    } 
    while($row = pg_fetch_row($ret)) {
-      echo " ID = ". $row[0] . "<br>";
-      echo " NAME = ". $row[1] ."<br>";
-      echo " EMAIL = ". $row[2] ."<br>";
-      echo " SEX =  ".$row[3] ."<br>";
+      echo " ID         = ". $row[0] . "<br>";
+      $trid = $row[0];
+      echo " NAME       = ". $row[1] ."<br>";
+      echo " EMAIL      = ". $row[2] ."<br>";
+      echo " GENDER     =  ".$row[3] ."<br>";
       echo " START DATE =  ".$row[4] ."<br>";
       echo " EXPERIENCE =  ".$row[5] ." years<br>";
-      echo " SALARY (In Rupees/Month)=  ".$row[6] ."<br><br>";
+      echo " SALARY     =  ".$row[6] ." Rs/Month <br><br>";
       echo "</center>";
    }
    // echo "Operation done successfully\n";
 
 
+$sql2=<<<EOF
+select * from conduct where trainer_id='$trid';
+EOF;
 
-
+  echo "<center><b>To start, you will be conducting the following exercise: </b>";
+   $ret2 = pg_query($con, $sql2);
+   if(!$ret2) {
+      echo pg_last_error($con);
+      exit;
+   } 
+   while($rows = pg_fetch_row($ret2)) {
+      $sql3=<<<EOF
+        select ex_name from exercises where e_id = '$rows[0]';
+EOF;
+   $ret3 = pg_query($con, $sql3);
+    while($rowd = pg_fetch_row($ret3)) {
+      echo $rowd[0]."<br><br>"."Further briefing will be given shortly.";
+    }
+    echo "</center>";
+  }
 ?>
 <script>
   alert("You will automatically be logged off when you close this window.")
