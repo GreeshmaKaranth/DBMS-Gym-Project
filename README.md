@@ -16,4 +16,4 @@ This directory contains the queries to build the database. This entire database 
 
 ## Website
 
-This directory contains the front-end of the project. We have built a relevant website using HTML, PHP, CSS and JavaScript for members to sign up to the gym and access their details. Detailed description is available in [Project Report](https://github.com/GreeshmaKaranth/dbms-gym-project/blob/master/Report/Project_Report.pdf)
+This directory contains the front-end of the project. We have built a relevant website using HTML, PHP, CSS and JavaScript for members to sign up to the gym and access their details. Detailed description is available in the [project report](https://github.com/GreeshmaKaranth/dbms-gym-project/blob/master/Report/Project_Report.pdf)
