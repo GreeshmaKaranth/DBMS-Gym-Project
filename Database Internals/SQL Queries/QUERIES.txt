@@ -1,0 +1,33 @@
+
+1) Write a query to display all members and their subscription packs that joined in 2019 and order them according to start date in descending order
+2) Write a query to display the number of attendees for the next exercises from current time
+3) To display the salary and experience of all trainers
+4) To display the merchandise sold in descending order of number sold
+5) To display the name of all exercises conducted by trainer 'Rajesh Khanna'
+6) To change phone number for trainer with trainer ID 'T003' from 9788776655 to 9876543210
+7) To add a new equipment 'Bouncy Ball' with quantity 15 and cost Rs. 1999
+8) To delete all instances/references of a trainer with trainer ID 'T003'
+9) To increase the stock values of all merchandise with in_stock values in 1 digit by 20
+10) To display the price is ascending order of all subscription packs with prices less than Rs. 10000
+11) Query to display the details of the equipment that has the highest total price
+12) Insert the records of premium members (i.e., members subscribed to a pack with price>15000) into a new table called premium_members
+13) Upgrade the subscription packs of the members subscribed to 10100 pack to 16000
+14) Find the Pack subscribed by all the members using the equipment 'Squat Rack'
+15) Increase salary by 5% for all trainers training members with subscription pack SP02
+16) To find the names of all excercises that exist in pack 1
+17) If the exercise has more than 60 members then 10% off on pack price that has this exercise
+18) Display details of members and the merchandise they have bought
+19) Members whose names start with R can avail a free headband (that is most in stock)
+20) Trainers whose experience in years is greater than 8 what all exercises are they taking
+
+
+21) Numbers of all members whose pack ends today, use like to extract fields
+	select * from members where end_date = current_date; 
+22) Information about how many members have taken an exercise
+	select ex_name, no_attending from exercises; 
+23) top 5 most used exercises
+	select ex_name, no_attending from exercises order by no_attending desc;
+24) top 5 most used equipments
+	select equipment_id, count(equipment_id) from use group by equipment_id order by count(equipment_id) desc;
+
+

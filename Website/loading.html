@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiran's Gym</title>
+<style>
+/*.container {
+ 	position: absolute;
+  	width: 27%;
+  	top: 150px;
+  	left:650px;
+
+}*/
+
+.image {
+	position: absolute;
+  display: block;
+  width: 500px;
+  height: 500px;
+  top: 200px;
+  left: 650px;
+
+}
+
+div {
+	width:10px;
+  height: 30px;
+  background-color: red;
+  animation-name: progbar;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  position: absolute;
+  left: 660px;
+  top: 780px;
+}
+
+@keyframes progbar {
+ 	from {background-color: yellow; width:10px;}
+   to {background-color: green; width: 500px;}
+}
+
+
+#hello
+{
+	color:white;
+	font-size: 45px;
+	font-family: Calibri;
+	position: absolute;
+	left: 768px;
+  	top: 780px;
+}
+
+h1
+{
+	color: yellow;
+	font-family: Helvetica;
+	font-size: 70px;
+	position: absolute;
+	left: 675px;
+	top:0px;
+	opacity: 0.8;
+}
+
+
+
+</style>
+</head>
+
+<body style="background-color:black">
+
+	<h1>KIRAN'S GYM</h1>
+	<img src="image.jpg" id="quote" class="image">
+	<div></div>
+	<p id = "hello"> COMING SOON</p>
+
+</body>
+</html>
